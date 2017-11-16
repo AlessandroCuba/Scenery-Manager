@@ -1,0 +1,13 @@
+<VirtualHost 192.168.2.102:80>
+  ServerName allscenery.com
+  ServerAlias www.allscenery.com*.xip.io
+  DocumentRoot "/var/www/html/allscenery.com/"
+  <Directory "/var/www/html/allscenery.com/">
+    AllowOverride All
+    Allow from 192.168.2.105
+  </Directory>
+</VirtualHost>
+
+
+
+1d61bcf74c5e4e22a3889e7f890c7b8c75b70269
