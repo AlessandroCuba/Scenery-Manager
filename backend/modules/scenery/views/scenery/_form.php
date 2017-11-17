@@ -8,6 +8,7 @@ use yeesoft\media\widgets\TinyMce;
 use nemmo\attachments\components\AttachmentsInput;
 use yii\bootstrap\Modal;
 use yii\helpers\Url;
+use v0lume\yii2\metaTags\MetaTags;
 
 /* Models */
 //use backend\modules\scenery\models\Scenery;
@@ -62,6 +63,20 @@ use backend\modules\scenery\models\Libraries;
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
+                        <?= $form->field($model, 'editableTag')->widget(Select2::classname(), [
+                                'data' => Scenery::getTagValues(),
+                                'language' => Yii::$app->language,
+                                'options' => ['multiple' => true, 'placeholder' => 'Tags ...'],
+                                'pluginOptions' => [
+                                    'tokenSeparators' => [',', ' '],
+                                    'tags' => true,
+                                    'allowClear' => true,
+                                ],
+                        ]);?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
                             <?= $form->field($model, 'description')->widget(TinyMce::className()); ?>
                         </div>
                         
@@ -81,17 +96,7 @@ use backend\modules\scenery\models\Libraries;
                         ])->label(false); ?>
                         </div>
                         <div class="col-xs-2">
-                            <?= Html::button('Add Library', ['value' => Url::toRoute(['libraries/create']), 'class' => 'btn btn-success', 'id' => 'modalLink']) ?>
-                            <?php
-                            Modal::begin([
-                                'header' => '<h2>Create new Library</h2>',
-                                'id' => 'libraryModal',
-                            ]);
-                                
-                            echo "<div id='modalContent'></di>";
-                            
-                            Modal::end();
-                            ?>
+                            <?= Html::button('Add Library', ['value' => Url::base().'/scenery/libraries/create', 'class' => 'btn btn-success', 'id' => 'modalLink']) ?>
                         </div>
                     </div>
                     
@@ -103,12 +108,12 @@ use backend\modules\scenery\models\Libraries;
                                         'multiple' => true,     // If you want to allow multiple upload, default to false
                                     ],
                                     'pluginOptions' => [        // Plugin options of the Kartik's FileInput widget 
-                                        'maxFileCount' => 10    // Client max files
+                                        'maxFileCount' => 10,    // Client max files
+                                        'initialPreviewConfig' => ['width' => '100px', 'height'=> '100px']
                                     ]
                             ]) ?>
                     </div>
                     
-
                     <?= $form->field($model, 'url_video')->textInput(['maxlength' => true]) ?>
 
                     <?= $form->field($model, 'url_download')->textInput(['maxlength' => true]) ?>
@@ -119,7 +124,14 @@ use backend\modules\scenery\models\Libraries;
         </div>
 
         <div class="col-md-3">
-
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <?= MetaTags::widget([
+                            'model' => $model,
+                            'form' => $form
+                    ]); ?>
+                </div>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
@@ -174,10 +186,20 @@ use backend\modules\scenery\models\Libraries;
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <?php  ActiveForm::end(); ?>
 
 </div>
+
+<?php
+    Modal::begin([
+        'header' => '<h2>Create new Library</h2>',
+        'id' => 'libraryModal',
+    ]);
+                                
+    echo "<div id='modalContent'></div>";
+    
+    Modal::end();
+?>

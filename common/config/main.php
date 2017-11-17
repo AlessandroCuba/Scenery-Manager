@@ -1,10 +1,18 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'bootstrap' => ['comments', 'yee'],
+    'bootstrap' => [
+        'comments', 
+        'yee',
+    ],
     'language' => 'en-US',
     'sourceLanguage' => 'en-US',
     'components' => [
+        'metaTags' => [
+            'class' => 'v0lume\yii2\metaTags\MetaTagsComponent',
+            'generateCsrf' => false,
+            'generateOg' => true,
+        ],
         'yee' => [
             'class' => 'yeesoft\Yee',
         ],

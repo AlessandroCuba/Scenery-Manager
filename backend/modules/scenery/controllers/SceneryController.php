@@ -12,9 +12,11 @@ use yeesoft\models\User;
  */
 class SceneryController extends BaseController 
 {
-    public $modelClass       = 'backend\modules\scenery\models\Scenery';
-    public $modelSearchClass = 'backend\modules\scenery\models\ScenerySearch';
-
+    public $modelClass              = 'backend\modules\scenery\models\Scenery';
+    public $modelSearchClass        = 'backend\modules\scenery\models\ScenerySearch';
+    public $modelLibraryClass       = 'backend\modules\scenery\models\Libraries';
+    public $modelLibrarySearchClass = 'backend\modules\scenery\models\LibrarySearch';
+    
     protected function getRedirectPage($action, $model = null)
     {
         if (!User::hasPermission('editScenery') && $action == 'create') {

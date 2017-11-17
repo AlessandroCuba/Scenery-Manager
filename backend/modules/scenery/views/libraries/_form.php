@@ -5,6 +5,8 @@ use yeesoft\helpers\Html;
 use nemmo\attachments\components\AttachmentsInput;
 use yeesoft\media\widgets\TinyMce;
 
+use backend\modules\scenery\models\Scenery;
+
 /* @var $this yii\web\View */
 /* @var $model backend\modules\scenery\models\Libraries */
 /* @var $form yeesoft\widgets\ActiveForm */

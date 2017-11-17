@@ -4,21 +4,17 @@ namespace backend\modules\scenery\controllers;
 
 use Yii;
 use yeesoft\controllers\admin\BaseController;
-use yeesoft\models\User;
 
 /**
- * LibrariesController implements the CRUD actions for backend\modules\scenery\models\Libraries model.
+ * SceneryTagsController implements the CRUD actions for backend\modules\scenery\models\SceneryTag model.
  */
-class LibrariesController extends BaseController 
+class TagsController extends BaseController 
 {
-    public $modelClass       = 'backend\modules\scenery\models\Libraries';
-    public $modelSearchClass = 'backend\modules\scenery\models\LibrariesSearch';
+    public $modelClass       = 'backend\modules\scenery\models\SceneryTag';
+    public $modelSearchClass = 'backend\modules\scenery\models\SceneryTagsSearch';
 
     protected function getRedirectPage($action, $model = null)
     {
-        if (!User::hasPermission('editScenery') && $action == 'create' && $action == 'update') {
-            return ['view', 'id' => $model>id];
-        }
         switch ($action) {
             case 'update':
                 return ['update', 'id' => $model->id];

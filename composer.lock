@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2b3517ea86fbd34ed6ff888a090ba63",
-    "content-hash": "80b98b3d92167aadb91908c1f0912e07",
+    "content-hash": "41385c6034a8e89602225e2d40938da4",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -63,7 +62,7 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2017-10-17 11:18:48"
+            "time": "2017-10-17T11:18:48+00:00"
         },
         {
             "name": "2amigos/yii2-gallery-widget",
@@ -124,7 +123,7 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2017-09-09 16:01:44"
+            "time": "2017-09-09T16:01:44+00:00"
         },
         {
             "name": "2amigos/yii2-tinymce-widget",
@@ -184,7 +183,55 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2017-06-09 14:12:14"
+            "time": "2017-06-09T14:12:14+00:00"
+        },
+        {
+            "name": "arogachev/yii2-many-to-many",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arogachev/yii2-many-to-many.git",
+                "reference": "0c277acbfabf7675aeec213dd56e8232b5bc73cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arogachev/yii2-many-to-many/zipball/0c277acbfabf7675aeec213dd56e8232b5bc73cf",
+                "reference": "0c277acbfabf7675aeec213dd56e8232b5bc73cf",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.4",
+                "phpunit/phpunit": "~5.2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "arogachev\\ManyToMany\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Rogachev",
+                    "email": "arogachev90@gmail.com"
+                }
+            ],
+            "description": "Many-to-many ActiveRecord relation for Yii 2 framework",
+            "homepage": "https://github.com/arogachev/yii2-many-to-many",
+            "keywords": [
+                "Behavior",
+                "many-to-many",
+                "relation",
+                "validator",
+                "yii2"
+            ],
+            "time": "2016-03-04T10:40:29+00:00"
         },
         {
             "name": "bizley/cookiemonster",
@@ -228,7 +275,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-05-10 16:39:18"
+            "time": "2016-05-10T16:39:18+00:00"
         },
         {
             "name": "bower-asset/blueimp-canvas-to-blob",
@@ -497,6 +544,47 @@
             ]
         },
         {
+            "name": "bower-asset/jquery-colorbox",
+            "version": "1.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jackmoore/colorbox.git",
+                "reference": "bac78120c6ca9e63370cc317ab6f400129cd6608"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jackmoore/colorbox/zipball/bac78120c6ca9e63370cc317ab6f400129cd6608",
+                "reference": "bac78120c6ca9e63370cc317ab6f400129cd6608",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.3.2"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "jquery.colorbox.js",
+                "bower-asset-ignore": [
+                    "colorbox.jquery.json",
+                    "colorbox.ai",
+                    "content",
+                    "example1/index.html",
+                    "example2/index.html",
+                    "example3/index.html",
+                    "example4/index.html",
+                    "example5/index.html"
+                ]
+            },
+            "description": "jQuery lightbox and modal window plugin",
+            "keywords": [
+                "gallery",
+                "jquery-plugin",
+                "lightbox",
+                "modal",
+                "popup",
+                "ui"
+            ]
+        },
+        {
             "name": "bower-asset/jquery-timeago",
             "version": "v1.6.1",
             "source": {
@@ -630,6 +718,22 @@
             }
         },
         {
+            "name": "bower-asset/raty",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wbotelhos/raty.git",
+                "reference": "afeec30f33b256b38d98529e0a7348ddd7da517e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wbotelhos/raty/zipball/afeec30f33b256b38d98529e0a7348ddd7da517e",
+                "reference": "afeec30f33b256b38d98529e0a7348ddd7da517e",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
+        },
+        {
             "name": "bower-asset/yii2-pjax",
             "version": "dev-master",
             "source": {
@@ -664,8 +768,7 @@
             },
             "license": [
                 "MIT"
-            ],
-            "time": "2017-10-14 08:42:41"
+            ]
         },
         {
             "name": "cebe/markdown",
@@ -725,7 +828,52 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2017-07-16 21:13:23"
+            "time": "2017-07-16T21:13:23+00:00"
+        },
+        {
+            "name": "chiliec/yii2-vote",
+            "version": "4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Chiliec/yii2-vote.git",
+                "reference": "5b85f046fd0859873e18ab1ba1807b6c9ad238ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Chiliec/yii2-vote/zipball/5b85f046fd0859873e18ab1ba1807b6c9ad238ec",
+                "reference": "5b85f046fd0859873e18ab1ba1807b6c9ad238ec",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "yiisoft/yii2-codeception": "^2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "chiliec\\vote\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Vladimir Babin",
+                    "email": "vovababin@gmail.com",
+                    "homepage": "http://chiliec.ru"
+                }
+            ],
+            "description": "Provides anonymous voting for any models",
+            "keywords": [
+                "anonymous",
+                "vote",
+                "voting"
+            ],
+            "time": "2017-09-09T11:31:34+00:00"
         },
         {
             "name": "components/bootstrap",
@@ -793,7 +941,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2016-07-26 05:59:20"
+            "time": "2016-07-26T05:59:20+00:00"
         },
         {
             "name": "components/jquery",
@@ -835,7 +983,7 @@
             ],
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
-            "time": "2017-03-21 07:01:49"
+            "time": "2017-03-21T07:01:49+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -882,7 +1030,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-06-03 02:28:16"
+            "time": "2017-06-03T02:28:16+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
@@ -930,7 +1078,7 @@
                 "font",
                 "icon"
             ],
-            "time": "2016-10-24 15:52:54"
+            "time": "2016-10-24T15:52:54+00:00"
         },
         {
             "name": "geertw/yii2-adsense",
@@ -974,7 +1122,50 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-07-20 00:14:57"
+            "time": "2017-07-20T00:14:57+00:00"
+        },
+        {
+            "name": "himiklab/yii2-colorbox-widget",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/himiklab/yii2-colorbox-widget.git",
+                "reference": "c4aee292cdeabe03e996eb4396719376c2252602"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/himiklab/yii2-colorbox-widget/zipball/c4aee292cdeabe03e996eb4396719376c2252602",
+                "reference": "c4aee292cdeabe03e996eb4396719376c2252602",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-colorbox": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "himiklab\\colorbox\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HimikLab",
+                    "homepage": "https://github.com/himiklab/"
+                }
+            ],
+            "description": "Customizable lightbox widget for Yii2",
+            "keywords": [
+                "colorbox",
+                "lightbox",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-02-02T10:23:58+00:00"
         },
         {
             "name": "ikimea/browser",
@@ -1022,7 +1213,7 @@
             "keywords": [
                 "browser"
             ],
-            "time": "2017-06-09 09:14:21"
+            "time": "2017-06-09T09:14:21+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -1079,20 +1270,20 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2015-09-19 16:54:05"
+            "time": "2015-09-19T16:54:05+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
-            "version": "v4.4.5",
+            "version": "v4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "47377ede9533f2060ed8a132a925e4efa60cbd77"
+                "reference": "0014931de1fd466f3901efcb45198c985d999c3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/47377ede9533f2060ed8a132a925e4efa60cbd77",
-                "reference": "47377ede9533f2060ed8a132a925e4efa60cbd77",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/0014931de1fd466f3901efcb45198c985d999c3d",
+                "reference": "0014931de1fd466f3901efcb45198c985d999c3d",
                 "shasum": ""
             },
             "type": "library",
@@ -1132,7 +1323,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2017-10-01 12:55:30"
+            "time": "2017-11-13T13:37:26+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -1183,7 +1374,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-09-29 06:18:14"
+            "time": "2017-09-29T06:18:14+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-activeform",
@@ -1235,7 +1426,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-27 18:38:05"
+            "time": "2016-04-27T18:38:05+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
@@ -1290,7 +1481,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-05-25 20:12:30"
+            "time": "2017-05-25T20:12:30+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-select2",
@@ -1343,7 +1534,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-08-07 18:12:36"
+            "time": "2017-08-07T18:12:36+00:00"
         },
         {
             "name": "masterexploder/phpthumb",
@@ -1390,7 +1581,66 @@
                 "resize",
                 "rotate"
             ],
-            "time": "2015-09-08 22:55:44"
+            "time": "2015-09-08T22:55:44+00:00"
+        },
+        {
+            "name": "nemmo/yii2-attachments",
+            "version": "1.0.0-beta.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nemmo/yii2-attachments.git",
+                "reference": "2636e214b87b1cfdcd2396741be76145ad092092"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nemmo/yii2-attachments/zipball/2636e214b87b1cfdcd2396741be76145ad092092",
+                "reference": "2636e214b87b1cfdcd2396741be76145ad092092",
+                "shasum": ""
+            },
+            "require": {
+                "himiklab/yii2-colorbox-widget": "*",
+                "kartik-v/yii2-widget-fileinput": "~1.0.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nemmo\\attachments\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alimzhan Abuov aka Nemmo",
+                    "email": "alimzhan.abu@yandex.kz",
+                    "homepage": "http://alimzhan.kz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extension for file uploading and attaching to the models",
+            "homepage": "https://github.com/Nemmo/yii2-attachments",
+            "keywords": [
+                "attachment",
+                "extension",
+                "file",
+                "upload",
+                "yii2"
+            ],
+            "time": "2016-12-07T12:54:01+00:00"
         },
         {
             "name": "nicolasbize/magicsuggest",
@@ -1427,7 +1677,7 @@
             ],
             "description": "MagicSuggest is a multiple selection auto suggest combo box for Bootstrap 3.",
             "homepage": "http://nicolasbize.com/magicsuggest",
-            "time": "2014-10-16 23:17:26"
+            "time": "2014-10-16T23:17:26+00:00"
         },
         {
             "name": "omgdef/yii2-multilingual-behavior",
@@ -1475,7 +1725,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2016-02-12 10:38:57"
+            "time": "2016-02-12T10:38:57+00:00"
         },
         {
             "name": "paulzi/yii2-nested-intervals",
@@ -1521,7 +1771,7 @@
                 "nested sets",
                 "yii2"
             ],
-            "time": "2016-10-13 22:33:11"
+            "time": "2016-10-13T22:33:11+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -1573,7 +1823,7 @@
                 "font",
                 "yii"
             ],
-            "time": "2017-01-11 14:05:47"
+            "time": "2017-01-11T14:05:47+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1627,7 +1877,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-05-01 15:54:03"
+            "time": "2017-05-01T15:54:03+00:00"
         },
         {
             "name": "tijsverkoyen/akismet",
@@ -1666,7 +1916,7 @@
             ],
             "description": "Akismet is a wrapper-class to communicate with the Akismet API.",
             "homepage": "https://github.com/tijsverkoyen/Akismet",
-            "time": "2016-07-19 13:50:18"
+            "time": "2016-07-19T13:50:18+00:00"
         },
         {
             "name": "tinymce/tinymce",
@@ -1712,7 +1962,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2017-10-05 11:39:51"
+            "time": "2017-10-05T11:39:51+00:00"
         },
         {
             "name": "twbs/bootstrap",
@@ -1763,7 +2013,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2016-07-25 15:51:55"
+            "time": "2016-07-25T15:51:55+00:00"
         },
         {
             "name": "webcreator/yii2-revslider",
@@ -1806,7 +2056,7 @@
                 "slider",
                 "yii2"
             ],
-            "time": "2016-08-27 19:21:40"
+            "time": "2016-08-27T19:21:40+00:00"
         },
         {
             "name": "webvimark/date-range-picker",
@@ -1830,7 +2080,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "dangrossman daterangepicker yii 2 gridview",
-            "time": "2017-02-27 19:12:56"
+            "time": "2017-02-27T19:12:56+00:00"
         },
         {
             "name": "yeesoft/yee-i18n",
@@ -1863,7 +2113,7 @@
                 }
             ],
             "description": "Migrations for Yee CMS powered site internationalization",
-            "time": "2017-11-06 15:31:30"
+            "time": "2017-11-06T15:31:30+00:00"
         },
         {
             "name": "yeesoft/yee-theme",
@@ -1899,7 +2149,7 @@
                 "cms",
                 "yee"
             ],
-            "time": "2017-03-25 21:06:21"
+            "time": "2017-03-25T21:06:21+00:00"
         },
         {
             "name": "yeesoft/yii2-comments",
@@ -1937,7 +2187,7 @@
                 }
             ],
             "description": "Comments Module For Yii2 Framework",
-            "time": "2017-04-16 16:27:45"
+            "time": "2017-04-16T16:27:45+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-auth",
@@ -1975,7 +2225,7 @@
                 }
             ],
             "description": "Authorization Module For Yee CMS",
-            "time": "2017-03-01 10:53:02"
+            "time": "2017-03-01T10:53:02+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-comment",
@@ -2012,7 +2262,7 @@
                 }
             ],
             "description": "Comments Module For Yee CMS",
-            "time": "2017-03-01 10:56:12"
+            "time": "2017-03-01T10:56:12+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-core",
@@ -2053,7 +2303,7 @@
                 }
             ],
             "description": "Core Module For Yee CMS",
-            "time": "2017-03-04 21:03:45"
+            "time": "2017-03-04T21:03:45+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-eav",
@@ -2089,7 +2339,7 @@
                 }
             ],
             "description": "EAV Module For Yee CMS",
-            "time": "2017-03-01 11:36:19"
+            "time": "2017-03-01T11:36:19+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-generator",
@@ -2122,7 +2372,7 @@
                 }
             ],
             "description": "Yee Gii Generators",
-            "time": "2017-03-01 10:23:12"
+            "time": "2017-03-01T10:23:12+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-media",
@@ -2161,7 +2411,7 @@
                 }
             ],
             "description": "Media Module For Yee CMS",
-            "time": "2017-03-01 12:07:50"
+            "time": "2017-03-01T12:07:50+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-menu",
@@ -2197,7 +2447,7 @@
                 }
             ],
             "description": "Menu Module For Yee CMS",
-            "time": "2017-03-01 11:33:34"
+            "time": "2017-03-01T11:33:34+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-page",
@@ -2234,7 +2484,7 @@
                 }
             ],
             "description": "Page Module For Yee CMS",
-            "time": "2017-03-01 11:38:39"
+            "time": "2017-03-01T11:38:39+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-post",
@@ -2273,7 +2523,7 @@
                 }
             ],
             "description": "Post Module For Yee CMS",
-            "time": "2017-04-05 14:36:58"
+            "time": "2017-04-05T14:36:58+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-seo",
@@ -2309,7 +2559,7 @@
                 }
             ],
             "description": "SEO Module For Yee CMS",
-            "time": "2017-03-01 11:23:59"
+            "time": "2017-03-01T11:23:59+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-settings",
@@ -2345,7 +2595,7 @@
                 }
             ],
             "description": "Settings Module For Yee CMS",
-            "time": "2017-03-01 11:20:48"
+            "time": "2017-03-01T11:20:48+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-translation",
@@ -2381,7 +2631,7 @@
                 }
             ],
             "description": "Translation Module For Yee CMS",
-            "time": "2017-03-01 10:59:24"
+            "time": "2017-03-01T10:59:24+00:00"
         },
         {
             "name": "yeesoft/yii2-yee-user",
@@ -2420,7 +2670,7 @@
                 }
             ],
             "description": "User Module For Yee CMS",
-            "time": "2017-03-01 10:18:47"
+            "time": "2017-03-01T10:18:47+00:00"
         },
         {
             "name": "yii-dream-team/yii2-upload-behavior",
@@ -2469,7 +2719,47 @@
                 "thumb",
                 "upload"
             ],
-            "time": "2017-10-26 15:44:40"
+            "time": "2017-10-26T15:44:40+00:00"
+        },
+        {
+            "name": "yii2mod/yii2-star-rating",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii2mod/yii2-star-rating.git",
+                "reference": "4bf825b0385bacc5b8e1bc9fb8550ad875381bf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii2mod/yii2-star-rating/zipball/4bf825b0385bacc5b8e1bc9fb8550ad875381bf4",
+                "reference": "4bf825b0385bacc5b8e1bc9fb8550ad875381bf4",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/raty": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii2mod\\rating\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Chepurnoy",
+                    "email": "igorzfort@gmail.com"
+                }
+            ],
+            "description": "Star rating widget based on jQuery Raty https://github.com/wbotelhos/raty",
+            "keywords": [
+                "module",
+                "yii2"
+            ],
+            "time": "2016-03-21T15:38:36+00:00"
         },
         {
             "name": "yiidoc/yii2-timeago",
@@ -2511,7 +2801,7 @@
                 "timeago",
                 "yii"
             ],
-            "time": "2015-01-31 12:54:19"
+            "time": "2015-01-31T12:54:19+00:00"
         },
         {
             "name": "yiimaker/yii2-social-share",
@@ -2563,20 +2853,20 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-10-02 17:58:22"
+            "time": "2017-10-02T17:58:22+00:00"
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.13",
+            "version": "2.0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "9f82b8f0df9adb4b8a410be5aaa97818153689d9"
+                "reference": "7af96d8da5ea3e9a5dd05d0e734b21c5726a6ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/9f82b8f0df9adb4b8a410be5aaa97818153689d9",
-                "reference": "9f82b8f0df9adb4b8a410be5aaa97818153689d9",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/7af96d8da5ea3e9a5dd05d0e734b21c5726a6ddf",
+                "reference": "7af96d8da5ea3e9a5dd05d0e734b21c5726a6ddf",
                 "shasum": ""
             },
             "require": {
@@ -2663,7 +2953,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-11-02 22:09:29"
+            "time": "2017-11-14T11:08:21+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2715,7 +3005,7 @@
                 "oauth",
                 "yii2"
             ],
-            "time": "2017-11-03 12:32:29"
+            "time": "2017-11-03T12:32:29+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -2761,7 +3051,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2017-10-09 19:48:22"
+            "time": "2017-10-09T19:48:22+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -2811,7 +3101,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-12-20 13:26:02"
+            "time": "2016-12-20T13:26:02+00:00"
         },
         {
             "name": "yiisoft/yii2-httpclient",
@@ -2858,7 +3148,7 @@
                 "httpclient",
                 "yii2"
             ],
-            "time": "2017-11-03 11:22:03"
+            "time": "2017-11-03T11:22:03+00:00"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -2906,7 +3196,7 @@
                 "imagine",
                 "yii2"
             ],
-            "time": "2016-11-03 19:28:39"
+            "time": "2016-11-03T19:28:39+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -2956,7 +3246,7 @@
                 "jQuery UI",
                 "yii2"
             ],
-            "time": "2016-07-22 22:26:59"
+            "time": "2016-07-22T22:26:59+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -3006,7 +3296,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2017-05-01 08:29:00"
+            "time": "2017-05-01T08:29:00+00:00"
         }
     ],
     "packages-dev": [
@@ -3085,7 +3375,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2017-08-15 16:48:10"
+            "time": "2017-08-15T16:48:10+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -3123,7 +3413,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
+            "time": "2016-04-07T12:29:16+00:00"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -3169,7 +3459,7 @@
                 "yii2"
             ],
             "abandoned": "codeception/codeception",
-            "time": "2017-05-22 12:08:21"
+            "time": "2017-05-22T12:08:21+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -3216,7 +3506,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-10-09 20:30:01"
+            "time": "2017-10-09T20:30:01+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -3263,7 +3553,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-03-01T06:22:44+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -3316,7 +3606,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18 14:09:46"
+            "time": "2016-03-18T14:09:46+00:00"
         }
     ],
     "aliases": [],

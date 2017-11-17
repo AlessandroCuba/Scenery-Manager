@@ -2,6 +2,8 @@
 
 use yii\widgets\DetailView;
 use yeesoft\helpers\Html;
+use yii2mod\rating\StarRating;
+
 use backend\modules\scenery\models\Scenery;
 use backend\modules\scenery\widgets\ImagesScenery;
 
@@ -64,7 +66,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format' => 'raw',
                             'value' => date('d.M.Y, H:i', $model->updated_at)
                         ],
-                        'ranking',
+                        [
+                            'attribute' => 'ranking',
+                            'format' => 'raw',
+                            'value' => StarRating::widget([
+                                            'name' => 'ranking',
+                                            'value' => $model->ranking,
+                                            'clientOptions' => ['displayOnly' => true, 'readOnly' => true]
+                                        ])
+                        ],
                         [
                             'attribute' => 'status',
                             'format'=>'raw',

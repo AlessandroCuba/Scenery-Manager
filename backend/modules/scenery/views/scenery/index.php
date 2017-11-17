@@ -6,6 +6,7 @@ use yeesoft\grid\GridView;
 use yeesoft\grid\GridQuickLinks;
 use yeesoft\helpers\Html;
 use yeesoft\grid\GridPageSize;
+use yii2mod\rating\StarRating;
 
 /* Models */
 use backend\modules\scenery\models\Scenery;
@@ -103,18 +104,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     }
                     ],
                     [
-                        'attribute' => 'updater_id',
-                        'filter' => User::getUsersList(),
-                        'value' => function (Scenery $model) {
-                            return Html::a($model->updater->username,
-                                ['/user/default/update', 'id' => $model->author_id],
-                                ['data-pjax' => 0]);
-                        },
-                        'format' => 'raw',
-                        'visible' => User::hasPermission('viewUsers'),
-                        'options' => ['style' => 'width:180px'],
-                    ],
-                    [
                         'attribute' => 'updated_at',
                         'value' => function($data){
                                         return date('d.M.Y, H:i', $data->updated_at);
@@ -134,7 +123,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]);
             ?>
-
             <?php Pjax::end() ?>
         </div>
     </div>

@@ -62,7 +62,7 @@ class Libraries extends \yii\db\ActiveRecord
                     //ActiveRecord::EVENT_BEFORE_UPDATE => 'status',
                 ],
                 'value' => function ($event) {
-                                return Scenery::STATUS_INACTIVE;
+                                return Scenery::STATUS_ACTIVE;
                             },
             ]
         ];

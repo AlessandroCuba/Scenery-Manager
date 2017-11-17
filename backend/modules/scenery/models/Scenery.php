@@ -13,12 +13,11 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 
-use yeesoft\models\User;
+use yeesoft\models\User;;
+use nemmo\attachments\models\File;
 use backend\modules\scenery\models\Sim;
 use backend\modules\scenery\models\Libraries;
-
-use nemmo\attachments\models\File;
-
+use backend\modules\scenery\models\SceneryTag;
 /**
  * This is the model class for table "scenerysim".
  *
@@ -49,7 +48,7 @@ class Scenery extends \yii\db\ActiveRecord
     * @var array
     */
     public $editableLibrary;
-    
+    public $editableTag;
     /**
      * @inheritdoc
      */
@@ -61,15 +60,19 @@ class Scenery extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            [
-            'class' => ManyToManyBehavior::className(),
-            'relations' => [[
-                'editableAttribute' => 'editableLibrary',     // Editable attribute name
-                'table' => 'libreries_to_scenery',          // Name of the junction table
-                'ownAttribute' => 'scenery_id',             // Name of the column in junction table that represents current model
-                'relatedModel' => Libraries::className(),        // Related model class
-                'relatedAttribute' => 'librery_id',          // Name of the column in junction table that represents related model
-            ]]
+            'MetaTag' => [
+                'class' => MetaTagBehavior::className(),
+            ],
+            'manytomany'=>[
+                'class' => ManyToManyBehavior::className(),
+                'relations' => [
+                [
+                    'editableAttribute' => 'editableLibrary',     // Editable attribute name
+                    'table' => 'libreries_to_scenery',          // Name of the junction table
+                    'ownAttribute' => 'scenery_id',             // Name of the column in junction table that represents current model
+                    'relatedModel' => Libraries::className(),        // Related model class
+                    'relatedAttribute' => 'librery_id',          // Name of the column in junction table that represents related model
+                ]],
             ],
             FileBehavior::className(),
             'timestamp' => [
@@ -106,6 +109,7 @@ class Scenery extends \yii\db\ActiveRecord
             [['icao', 'creator', 'description', 'catesim', 'url_download'], 'required'],
             [['catesim', 'ranking', 'status'], 'integer'],
             [['icao'], 'string', 'max' => 4],
+            ['editableTag', ManyToManyValidator::className()],
             [['creator', 'url_video'], 'string', 'max' => 45],
             [['description'], 'string', 'max' => 500],
             [['url_download'], 'string', 'max' => 250],
@@ -135,9 +139,30 @@ class Scenery extends \yii\db\ActiveRecord
             'ranking' => Yii::t('app', 'Ranking'),
             'status' => Yii::t('app', 'Status'),
             'editableLibrary' => Yii::t('app', 'Libraries'),
+            'tagValues' => Yii::t('yee', 'Tags'),
         ];
     }
     
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public static function getTagValues()
+    {
+        $tags = SceneryTag::find()->asArray()->all();
+        if(!empty($tags)){
+            return ArrayHelper::map($tags, 'id', 'tag');
+        }
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public static function getSceneryTags()
+    {
+        return $this->hasMany(SceneryTag::className(), ['id' => 'tag_id'])
+                    ->viaTable('{{%scenery_to_tag}}', ['scenery_id' => 'id']);
+    }
+
     // Obtiene Subdirectorio Image **Funciona, No tocar
     public static function getSubDirs($id, $depth = 3)
     {
