@@ -9,17 +9,17 @@ use yii\widgets\LinkPager;
 $this->title = 'Blog';
 ?>
 <div class="row">
-	<div class="col-md-8">
-		<?php
-		foreach ($posts as $post){
-		    echo $this->render('/items/post.php', ['post' => $post, 'page' => 'index', 'read' => 1]);
-		}?>
-		<div class="text-center">
-			<?= LinkPager::widget(['pagination' => $pagination]) ?>
-		</div>
+    <div class="col-md-8">
+        <?php
+            foreach ($posts as $post){
+                echo $this->render('/items/post.php', ['post' => $post, 'page' => 'index', 'read' => 1]);
+            }?>
+	<div class="text-center">
+            <?= LinkPager::widget(['pagination' => $pagination]) ?>
 	</div>
-	<div class="col-md-4"> 
-		<?= $this->render('left'); ?>
-	</div>
+    </div>
+    <div class="col-md-4"> 
+        <?= $this->render('left'); ?>
+    </div>
 </div>
 

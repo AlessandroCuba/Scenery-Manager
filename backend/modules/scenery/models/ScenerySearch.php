@@ -11,7 +11,10 @@ use backend\modules\scenery\models\Scenery;
  * ScenerySearch represents the model behind the search form about `backend\modules\scenery\models\Scenery`.
  */
 class ScenerySearch extends Scenery
-{
+{   
+    public $region;
+    public $country;
+    
     /**
      * @inheritdoc
      */
@@ -19,7 +22,7 @@ class ScenerySearch extends Scenery
     {
         return [
             [['id', 'catesim', 'ranking', 'status'], 'integer'],
-            [['icao', 'creator', 'description', 'url_video', 'url_download', 'author_id', 'updater_id'], 'safe'],
+            [['icao', 'creator', 'author_id', 'region', 'country', 'catesim' ], 'safe'],
         ];
     }
 
@@ -41,8 +44,9 @@ class ScenerySearch extends Scenery
      */
     public function search($params)
     {
-        $query = Scenery::find();
-
+        
+        $query  = Scenery::find();
+        
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -50,7 +54,7 @@ class ScenerySearch extends Scenery
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_DESC,
+                    'icao' => SORT_DESC,
                 ],
             ],
         ]);
@@ -72,6 +76,7 @@ class ScenerySearch extends Scenery
             'status' => $this->status,
             'author_id' => $this->author_id, 
             'updater_id' => $this->updater_id,
+            
         ]);
 
         $query->andFilterWhere(['like', 'icao', $this->icao])

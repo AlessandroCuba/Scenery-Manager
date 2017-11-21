@@ -9,15 +9,18 @@ use yii\behaviors\AttributeBehavior;
 use nemmo\attachments\behaviors\FileBehavior;
 use arogachev\ManyToMany\behaviors\ManyToManyBehavior;
 use arogachev\ManyToMany\validators\ManyToManyValidator;
+use v0lume\yii2\metaTags\MetaTagBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 
-use yeesoft\models\User;;
+use yeesoft\models\User;
 use nemmo\attachments\models\File;
 use backend\modules\scenery\models\Sim;
 use backend\modules\scenery\models\Libraries;
 use backend\modules\scenery\models\SceneryTag;
+use backend\modules\scenery\models\Country;
+
 /**
  * This is the model class for table "scenerysim".
  *
@@ -49,6 +52,8 @@ class Scenery extends \yii\db\ActiveRecord
     */
     public $editableLibrary;
     public $editableTag;
+    public $region;
+    public $country;
     /**
      * @inheritdoc
      */
@@ -162,25 +167,23 @@ class Scenery extends \yii\db\ActiveRecord
         return $this->hasMany(SceneryTag::className(), ['id' => 'tag_id'])
                     ->viaTable('{{%scenery_to_tag}}', ['scenery_id' => 'id']);
     }
-
+    
     // Obtiene Subdirectorio Image **Funciona, No tocar
     public static function getSubDirs($id, $depth = 3)
     {
         $fileHash = File::findOne(['id' => $id]);
-        
         $depth = min($depth, 9);
         $path = '';
         
         for ($i = 0; $i < $depth; $i++) {
-            
             $folder = substr($fileHash->hash, $i * 3, 2);
             $path .= $folder;
-            
             if ($i != $depth - 1) $path .= DIRECTORY_SEPARATOR;
         }
         return $path.DIRECTORY_SEPARATOR.$fileHash->hash.'.'.$fileHash->type;
     }
     
+    // =========== getLists =============
     public static function getStatusList()
     {
         return [
@@ -190,7 +193,22 @@ class Scenery extends \yii\db\ActiveRecord
         ];
     }
     
+    public static function getSimList()
+    {
+        $sims = Sim::find()->select(['id_catsimulator', 'catsimulator'])->asArray()->all();
+        return ArrayHelper::map($sims, 'id_catsimulator', 'catsimulator');
+    }
     
+    public static function getAirportList(){
+        $airport = Airports::find()->asArray()->all();
+        return ArrayHelper::map($airport, 'ID', 'ICAO');
+    }
+    
+    public static function getCountyList(){
+        $country = Country::find()->asArray()->all();
+        return ArrayHelper::map($country, 'regionId', 'country_name');
+    }
+
     public static function getStatus($value)
     {
         if($value == Scenery::STATUS_ACTIVE) { 
@@ -202,16 +220,10 @@ class Scenery extends \yii\db\ActiveRecord
         }
     }
     
-    public function getdataTime($date)
+    public static function getdataTime($date)
     {
         return Yii::$app->formatter->asTime($this->isNewRecord ? time() : $date)
                .' '.Yii::$app->formatter->asDate($this->isNewRecord ? date() : $date);
-    }
-    
-    public static function getSimList()
-    {
-        $sims = Sim::find()->select(['id_catsimulator', 'catsimulator'])->asArray()->all();
-        return ArrayHelper::map($sims, 'id_catsimulator', 'catsimulator');
     }
     
     /**
@@ -227,7 +239,7 @@ class Scenery extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIcao()
+    public function getAirport()
     {
         return $this->hasOne(Airports::className(), ['ICAO' => 'icao']);
     }
@@ -243,7 +255,7 @@ class Scenery extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFile(){
+    public function getAttachment(){
         return $this->hasMany(File::className(), ['itemId' => 'id']);
     }
     

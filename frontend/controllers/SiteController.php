@@ -45,7 +45,6 @@ class SiteController extends \yeesoft\controllers\BaseController
      */
     public function actionBlog($slug = 'blog')
     {
-        
         // display home page
         if (empty($slug) || $slug == 'blog') {
             $this->layout = 'blog';
@@ -70,8 +69,9 @@ class SiteController extends \yeesoft\controllers\BaseController
         //try to display action from controller
         try {
             return $this->runAction($slug);
-        } catch (\yii\base\InvalidRouteException $ex) {
-
+        } 
+        catch (\yii\base\InvalidRouteException $ex) {
+            
         }
 
         //try to display static page from datebase

@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id_catsimulator
  * @property string $catsimulator
+ * @property string $color
  */
 class Sim extends \yii\db\ActiveRecord
 {
@@ -27,6 +28,7 @@ class Sim extends \yii\db\ActiveRecord
     {
         return [
             [['catsimulator'], 'string', 'max' => 45],
+            [['color'], 'string', 'max' => 6],
         ];
     }
 
@@ -37,7 +39,8 @@ class Sim extends \yii\db\ActiveRecord
     {
         return [
             'id_catsimulator' => Yii::t('app', 'Id Catsimulator'),
-            'catsimulator' => Yii::t('app', 'Catsimulator'),
+            'catsimulator' => Yii::t('app', 'Simulator'),
+            'color' => Yii::t('app', 'Color HEX'),
         ];
     }
 }

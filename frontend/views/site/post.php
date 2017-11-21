@@ -11,7 +11,10 @@ $this->params['breadcrumbs'][] = $post->title;
 ?>
 
 <div class="row">
-    <?= $this->render('/items/post.php', ['post' => $post, 'read' => 0]) ?>
+    <?= $this->render('/items/post.php', [
+        'post' => $post, 
+        'read' => 0
+    ]) ?>
 </div>
 
 

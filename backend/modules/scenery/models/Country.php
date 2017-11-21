@@ -53,7 +53,22 @@ class Country extends \yii\db\ActiveRecord
             'alpha2code' => Yii::t('app', 'Alpha2code'),
         ];
     }
-
+    
+    public function getCountryDepent($regionId)
+    {
+        $data = self::find()
+                ->andWhere(['regionId' => $regionId])
+                ->asArray()->all();
+                
+        foreach ($data as $dat) {
+            $out[] = ['id' => $dat['icao_country'], 'name' => $dat['country_name']];
+        }
+        return $output = [
+            'output' => $out,
+            'selected' => ''
+        ];
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */

@@ -9,7 +9,7 @@ $page = (isset($page)) ? $page : 'post';
 ?>
 
 <div class="post clearfix">
-    <h2><?= Html::a($post->title, ["/site/{$post->slug}"]) ?></h2>
+    <h2><?= Html::a($post->title, ["/site/blog/{$post->slug}"]) ?></h2>
 
     <p class="text-justify">
         <?= $post->getThumbnail(['class' => 'thumbnail pull-left', 'style' => 'width: 160px; margin: 0 7px 7px 0']) ?>

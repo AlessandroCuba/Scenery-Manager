@@ -3,6 +3,7 @@
 namespace backend\modules\scenery\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "icao_region".
@@ -49,6 +50,11 @@ class Region extends \yii\db\ActiveRecord
             'name_region' => Yii::t('app', 'Name Region'),
             'comentare' => Yii::t('app', 'Comentare'),
         ];
+    }
+    
+    public static function getRegionList(){
+        $region = self::find()->orderBy('name_region ASC')->asArray()->all();
+        return ArrayHelper::map($region, 'id_icao_region', 'name_region');
     }
 
     /**

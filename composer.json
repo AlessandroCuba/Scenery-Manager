@@ -58,7 +58,7 @@
     "nemmo/yii2-attachments": "~1.0.0",
     "arogachev/yii2-many-to-many": "0.2.*",
     "yii2mod/yii2-star-rating": "*",
-    "chiliec/yii2-vote": "^4.1"
+    "v0lume/yii2-meta-tags": "*"
 
   },
   "require-dev": {

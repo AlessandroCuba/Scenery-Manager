@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "41385c6034a8e89602225e2d40938da4",
+    "content-hash": "a85bccc09878d3b9bf3514eb67bd6ff3",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -829,51 +829,6 @@
                 "markdown-extra"
             ],
             "time": "2017-07-16T21:13:23+00:00"
-        },
-        {
-            "name": "chiliec/yii2-vote",
-            "version": "4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Chiliec/yii2-vote.git",
-                "reference": "5b85f046fd0859873e18ab1ba1807b6c9ad238ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Chiliec/yii2-vote/zipball/5b85f046fd0859873e18ab1ba1807b6c9ad238ec",
-                "reference": "5b85f046fd0859873e18ab1ba1807b6c9ad238ec",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "require-dev": {
-                "yiisoft/yii2-codeception": "^2.0"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "chiliec\\vote\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Vladimir Babin",
-                    "email": "vovababin@gmail.com",
-                    "homepage": "http://chiliec.ru"
-                }
-            ],
-            "description": "Provides anonymous voting for any models",
-            "keywords": [
-                "anonymous",
-                "vote",
-                "voting"
-            ],
-            "time": "2017-09-09T11:31:34+00:00"
         },
         {
             "name": "components/bootstrap",
@@ -2014,6 +1969,51 @@
                 "web"
             ],
             "time": "2016-07-25T15:51:55+00:00"
+        },
+        {
+            "name": "v0lume/yii2-meta-tags",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/v0lume/yii2-meta-tags.git",
+                "reference": "0e68b3bc5337f20e032a82d270ad9ea749be6468"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/v0lume/yii2-meta-tags/zipball/0e68b3bc5337f20e032a82d270ad9ea749be6468",
+                "reference": "0e68b3bc5337f20e032a82d270ad9ea749be6468",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "v0lume\\yii2\\metaTags\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Shmanovsky",
+                    "email": "heads@xakep.ru"
+                }
+            ],
+            "description": "DB based model meta data for SEO",
+            "keywords": [
+                "Active Record",
+                "Behavior",
+                "extension",
+                "meta",
+                "meta tags",
+                "seo",
+                "yii2"
+            ],
+            "time": "2017-07-12T09:16:59+00:00"
         },
         {
             "name": "webcreator/yii2-revslider",

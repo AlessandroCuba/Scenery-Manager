@@ -33,10 +33,13 @@ class TagController extends \yeesoft\controllers\BaseController
             }
         }
 
-        $query = Post::find()->joinWith('tags')->where([
-            'status' => Post::STATUS_PUBLISHED,
-            Tag::tableName() . '.slug' => $slug,
-        ])->orderBy('published_at DESC');
+        $query = Post::find()->joinWith('tags')
+                    ->where([
+                        'status' => Post::STATUS_PUBLISHED,
+                        Tag::tableName() . '.slug' => $slug,
+                    ])
+                    ->orderBy('published_at DESC');
+        
         $countQuery = clone $query;
 
         $pagination = new Pagination([

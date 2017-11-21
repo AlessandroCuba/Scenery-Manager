@@ -30,6 +30,10 @@ return [
         ],
     ],
     'modules' => [
+        'iviewer' => [
+            'class' => 'hoomanMirghasemi\iviewer\Module',
+            'loadingText' => 'loading ...',
+        ],
         'attachments' => [
             'class' => nemmo\attachments\Module::className(),
             'tempPath' => '@frontend/web/uploads/temp',
