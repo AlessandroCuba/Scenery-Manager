@@ -51,8 +51,6 @@ use backend\modules\scenery\models\Country;
     
     <?= $form->field($model, 'icao_country')->widget(DepDrop::classname(), [
             'type' => DepDrop::TYPE_SELECT2,
-            'data' => Country::getCountryList(),
-            'options' => ['multiple'=>true],
             'select2Options'=> [
                 'theme' => Select2::THEME_BOOTSTRAP,
                 'language' => Yii::$app->language,
@@ -62,6 +60,7 @@ use backend\modules\scenery\models\Country;
                 'placeholder' => 'Select Country...',
                 'url' => Url::to(['scenery/country']),
             ],
+            'data' => Country::getCountryList($model->region),
     ])->label(false);?>
     
     <?= $form->field($model, 'icao')->widget(TypeaheadBasic::classname(), [

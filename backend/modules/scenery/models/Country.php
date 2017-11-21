@@ -55,25 +55,31 @@ class Country extends \yii\db\ActiveRecord
         ];
     }
     
-    public static function getCountryList()
+    /*public function getCodeCountry()
     {
-        $country = self::find()->asArray()->all();
-        return ArrayHelper::map($country, 'icao_country', 'country_name');
+        return $this->icao_country.' '.$this->country_name;
+    }*/
+
+    public static function getCountryList($id)
+    {
+        $country = self::find()->select(['icao_country', 'CONCAT(icao_country," ",country_name) AS codeCountry'])
+                               ->where(['regionId' => $id])->asArray()->all();
+        return ArrayHelper::map($country, 'icao_country', 'codeCountry');
     }
 
     public static function getCountryDepent($regionId)
     {
-        $data = self::find()
-                ->andWhere(['regionId' => $regionId])
+        $data = self::find()->select(['icao_country', 'CONCAT(icao_country," ",country_name) AS codeCountry'])
+                ->where(['regionId' => $regionId])
                 ->asArray()->all();
         
         
         foreach ($data as $dat) {
-            $out[] = ['id' => $dat['icao_country'], 'name' => $dat['country_name']];
+        $out[] = ['id' => $dat['icao_country'], 'name' => $dat['codeCountry']];
         }
         return $output = [
             'output' => $out,
-            //'selected' => ''
+            'selected' => ''
         ];
     }
     

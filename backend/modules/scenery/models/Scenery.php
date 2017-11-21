@@ -148,6 +148,11 @@ class Scenery extends \yii\db\ActiveRecord
         ];
     }
     
+    public function getCodeCountry()
+    {
+        return $this->icao_country;
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
