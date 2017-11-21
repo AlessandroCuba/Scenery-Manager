@@ -53,7 +53,7 @@ class Scenery extends \yii\db\ActiveRecord
     public $editableLibrary;
     public $editableTag;
     public $region;
-    public $country;
+    public $icao_country;
     /**
      * @inheritdoc
      */

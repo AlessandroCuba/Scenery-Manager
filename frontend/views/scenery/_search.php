@@ -6,25 +6,39 @@ use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use kartik\typeahead\TypeaheadBasic;
 use kartik\widgets\DepDrop;
+use yii\widgets\Pjax;
+use yii\helpers\ArrayHelper;
 
 use backend\modules\scenery\models\Scenery;
 use backend\modules\scenery\models\Region;
+use backend\modules\scenery\models\Country;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\ScenerySearch */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
+<?php
+    $this->registerJs(
+       '$("document").ready(function(){ 
+            $("#sceneryform").on("pjax:end", function() {
+                $.pjax.reload({container:"#scenery"});  //Reload ListView
+            });
+        });'
+    );
+?>
 
-<div class="scenery-search">
+<div class="scenery">
+    <?php Pjax::begin(['id' => 'sceneryform']) ?>
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'options' => ['data-pjax' => true ],
     ]); ?>
     
     <?= $form->field($model, 'region')->widget(Select2::classname(), [
             'data' => Region::getRegionList(),
-            'language' =>Yii::$app->language,
+            'language' => Yii::$app->language,
             'theme' => Select2::THEME_BOOTSTRAP,
             'options' => [
                 'placeholder' => 'Select a Region ...',
@@ -35,16 +49,18 @@ use backend\modules\scenery\models\Region;
             ],
     ])->label(false);?>
     
-    <?= $form->field($model, 'country')->widget(DepDrop::classname(), [
+    <?= $form->field($model, 'icao_country')->widget(DepDrop::classname(), [
             'type' => DepDrop::TYPE_SELECT2,
-            //'options' => ['multiple'=>true],
-            'select2Options'=>[
-                'language' =>Yii::$app->language,
-                'pluginOptions'=>['allowClear'=>true]],
+            'data' => Country::getCountryList(),
+            'options' => ['multiple'=>true],
+            'select2Options'=> [
+                'theme' => Select2::THEME_BOOTSTRAP,
+                'language' => Yii::$app->language,
+                'pluginOptions' => ['allowClear' => true]],
             'pluginOptions' => [
                 'depends' => [Html::getInputId($model, 'region')],
                 'placeholder' => 'Select Country...',
-                'url' => Url::to(['scenery/country'])
+                'url' => Url::to(['scenery/country']),
             ],
     ])->label(false);?>
     
@@ -65,9 +81,12 @@ use backend\modules\scenery\models\Region;
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::a(Yii::t('app', 'Reset'), Url::to('index'), ['class' => 'btn btn-default']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
+    <?php 
+        ActiveForm::end(); 
+        Pjax::end();
+    ?>
+    
 </div>

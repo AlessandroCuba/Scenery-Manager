@@ -3,6 +3,7 @@
 namespace backend\modules\scenery\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "icao_country".
@@ -54,18 +55,25 @@ class Country extends \yii\db\ActiveRecord
         ];
     }
     
-    public function getCountryDepent($regionId)
+    public static function getCountryList()
+    {
+        $country = self::find()->asArray()->all();
+        return ArrayHelper::map($country, 'icao_country', 'country_name');
+    }
+
+    public static function getCountryDepent($regionId)
     {
         $data = self::find()
                 ->andWhere(['regionId' => $regionId])
                 ->asArray()->all();
-                
+        
+        
         foreach ($data as $dat) {
             $out[] = ['id' => $dat['icao_country'], 'name' => $dat['country_name']];
         }
         return $output = [
             'output' => $out,
-            'selected' => ''
+            //'selected' => ''
         ];
     }
     

@@ -14,7 +14,7 @@ use backend\modules\scenery\models\Region;
  */
 class ScenerySearch extends Scenery
 {
-    public $country;
+    public $icao_country;
     public $region;
     /**
      * @inheritdoc
@@ -23,7 +23,7 @@ class ScenerySearch extends Scenery
     {
         return [
             [['id', 'author_id', 'catesim', 'created_at', 'updater_id', 'updated_at', 'ranking', 'status'], 'integer'],
-            [['icao', 'creator', 'catesim', 'region', 'country'], 'safe'],
+            [['icao', 'creator', 'catesim', 'region', 'icao_country'], 'safe'],
         ];
     }
 
@@ -75,10 +75,11 @@ class ScenerySearch extends Scenery
         $query->andFilterWhere(['like', 'icao', $this->icao]);
         
         /* ======= Filter Country or Region ==================*/        
-        $queryRegion->andWhere(['id_icao_region' => $this->region]);
-        
-        if($this->country){
-            $queryCountry->andWhere(['icao_country' => $this->country])
+        if($this->region){        
+            $queryRegion->andWhere(['id_icao_region' => $this->region]);
+        }
+        if($this->icao_country){
+            $queryCountry->andWhere(['icao_country' => $this->icao_country])
                          ->andWhere(['IN', 'regionId', $queryRegion]);
         }
         $queryCountry->andWhere(['IN', 'regionId', $queryRegion]);

@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     
     <div class="col-md-9">
+        <?php Pjax::begin(['id' => 'scenery']) ?>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
             'options' => [
@@ -35,5 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'itemView' => 'items/_sceneryList',
         ])?>
+        <?php Pjax::end() ?>
     </div>
 </div>

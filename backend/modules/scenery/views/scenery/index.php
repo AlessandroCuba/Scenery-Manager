@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return date('d.M.Y, H:i', $data->updated_at);
                                     }
                     ],
-                    // 'ranking',
+                    'ranking',
                     [
                         'class' => 'yeesoft\grid\columns\StatusColumn',
                         'attribute' => 'status',
