@@ -17,7 +17,6 @@
 namespace backend\modules\scenery\widgets\AviationMapEmbed;
 
 use yii\base\Widget;
-use yii\helpers\Html;
 use yii\base\InvalidParamException;
 
 class AviationMapEmbed extends Widget{
@@ -57,8 +56,10 @@ class AviationMapEmbed extends Widget{
     
     public function run() {
         
-        $classContainer = (empty($this->class) && isset($this->class)) ? self::IMG_FLUID : $this->class ;
-        $idContainer    = (empty($this->divId) && isset($this->divId)) ? $this->divId : $this->myId;
+        
+        
+        $classContainer = (empty($this->class) || isset($this->class)) ? self::IMG_FLUID : $this->class ;
+        $idContainer    = (empty($this->divId) || isset($this->divId)) ? $this->divId : $this->myId;
         
         switch ($this->typeMap) {
             case self::VFR_SEC:
@@ -88,6 +89,8 @@ class AviationMapEmbed extends Widget{
             'zoomMap'           => $this->zoomMap,
             'typeMap'           => $this->typeMap,
             'nameMap'           => $nameMap,
+            'latitude'          => $this->latitude,
+            'longitude'         => $this->longitude,
         ]);
     }
 }

@@ -21,7 +21,7 @@ class AirportsSearch extends Airports
         return [
             [['ID', 'PrimaryID', 'Elevation'], 'integer'],
             [['Name', 'ICAO', 'country_name'], 'safe'],
-            [['Latitude', 'Longtitude'], 'number'],
+            [['Latitude', 'Longitude'], 'number'],
         ];
     }
 
@@ -81,7 +81,7 @@ class AirportsSearch extends Airports
             'ID' => $this->ID,
             'PrimaryID' => $this->PrimaryID,
             'Latitude' => $this->Latitude,
-            'Longtitude' => $this->Longtitude,
+            'Longitude' => $this->Longitude,
             'Elevation' => $this->Elevation,
             'country_name' => $this->country_name,
         ]);

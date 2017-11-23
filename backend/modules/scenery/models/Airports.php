@@ -15,7 +15,7 @@ use backend\modules\scenery\models\Country;
  * @property string $ICAO
  * @property integer $PrimaryID
  * @property double $Latitude
- * @property double $Longtitude
+ * @property double $Longitude
  * @property integer $Elevation
  * @property string $country_name
  * 
@@ -40,7 +40,7 @@ class Airports extends \yii\db\ActiveRecord
         return [
             [['ID'], 'required'],
             [['ID', 'PrimaryID', 'Elevation'], 'integer'],
-            [['Latitude', 'Longtitude'], 'number'],
+            [['Latitude', 'Longitude'], 'number'],
             [['Name'], 'string', 'max' => 38],
             [['ICAO'], 'string', 'max' => 4],
         ];
@@ -57,7 +57,7 @@ class Airports extends \yii\db\ActiveRecord
             'ICAO' => Yii::t('app', 'Icao'),
             'PrimaryID' => Yii::t('app', 'Primary ID'),
             'Latitude' => Yii::t('app', 'Latitude'),
-            'Longtitude' => Yii::t('app', 'Longtitude'),
+            'Longitude' => Yii::t('app', 'Longtitude'),
             'Elevation' => Yii::t('app', 'Elevation'),
             'country_name' => Yii::t('app', 'Country'),
         ];
