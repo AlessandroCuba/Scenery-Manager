@@ -17,6 +17,7 @@ use backend\modules\scenery\models\Airports;
 use backend\modules\scenery\models\Scenery;
 use backend\modules\scenery\models\Libraries;
 
+
 /* @var $this yii\web\View */
 /* @var $model backend\modules\scenery\models\Scenery */
 /* @var $form yeesoft\widgets\ActiveForm */
@@ -25,7 +26,7 @@ use backend\modules\scenery\models\Libraries;
 <div class="scenery-form">
 
     <?php 
-    
+       
     $form = ActiveForm::begin([
             'id' => 'scenery-form',
             'validateOnBlur' => false,
@@ -99,7 +100,6 @@ use backend\modules\scenery\models\Libraries;
                             <?= Html::button('Add Library', ['value' => Url::base().'/scenery/libraries/create', 'class' => 'btn btn-success', 'id' => 'modalLink']) ?>
                         </div>
                     </div>
-                    
                     <div class="col-xs-12">
                         <?= AttachmentsInput::widget([
                                     'id' => 'file-input',       // Optional
@@ -109,7 +109,7 @@ use backend\modules\scenery\models\Libraries;
                                     ],
                                     'pluginOptions' => [        // Plugin options of the Kartik's FileInput widget 
                                         'maxFileCount' => 10,    // Client max files
-                                        'initialPreviewConfig' => ['width' => '100px', 'height'=> '100px']
+                                        'resizeImages' => true,
                                     ]
                             ]) ?>
                     </div>
@@ -117,7 +117,6 @@ use backend\modules\scenery\models\Libraries;
                     <?= $form->field($model, 'url_video')->textInput(['maxlength' => true]) ?>
 
                     <?= $form->field($model, 'url_download')->textInput(['maxlength' => true]) ?>
-
                 </div>
 
             </div>

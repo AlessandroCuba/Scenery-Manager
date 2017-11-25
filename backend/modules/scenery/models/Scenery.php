@@ -13,7 +13,6 @@ use v0lume\yii2\metaTags\MetaTagBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
-
 use yeesoft\models\User;
 use nemmo\attachments\models\File;
 use backend\modules\scenery\models\Sim;
@@ -152,10 +151,10 @@ class Scenery extends \yii\db\ActiveRecord
     {
         return $this->icao_country;
     }
-    
+
     /**
-     * @return \yii\db\ActiveQuery
-     */
+    * @return \yii\db\ActiveQuery
+    */
     public static function getTagValues()
     {
         $tags = SceneryTag::find()->asArray()->all();
@@ -189,8 +188,7 @@ class Scenery extends \yii\db\ActiveRecord
     }
     
     // =========== getLists =============
-    public static function getStatusList()
-    {
+    public static function getStatusList(){
         return [
             self::STATUS_ACTIVE => Yii::t('yee', 'Active'),
             self::STATUS_PIRATE => Yii::t('yee', 'Pirate'),
@@ -198,15 +196,9 @@ class Scenery extends \yii\db\ActiveRecord
         ];
     }
     
-    public static function getSimList()
-    {
+    public static function getSimList(){
         $sims = Sim::find()->select(['id_catsimulator', 'catsimulator'])->asArray()->all();
         return ArrayHelper::map($sims, 'id_catsimulator', 'catsimulator');
-    }
-    
-    public static function getAirportList(){
-        $airport = Airports::find()->asArray()->all();
-        return ArrayHelper::map($airport, 'ID', 'ICAO');
     }
     
     public static function getCountyList(){
@@ -214,8 +206,7 @@ class Scenery extends \yii\db\ActiveRecord
         return ArrayHelper::map($country, 'regionId', 'country_name');
     }
 
-    public static function getStatus($value)
-    {
+    public static function getStatus($value){
         if($value == Scenery::STATUS_ACTIVE) { 
             return '<span class="label label-success">Active</span>';
         }elseif ($value == Scenery::STATUS_INACTIVE) {
@@ -225,8 +216,7 @@ class Scenery extends \yii\db\ActiveRecord
         }
     }
     
-    public static function getdataTime($date)
-    {
+    public static function getdataTime($date){
         return Yii::$app->formatter->asTime($this->isNewRecord ? time() : $date)
                .' '.Yii::$app->formatter->asDate($this->isNewRecord ? date() : $date);
     }
@@ -234,8 +224,7 @@ class Scenery extends \yii\db\ActiveRecord
     /**
     * @return \yii\db\ActiveQuery
     */
-    public function getLibraries()
-    {
+    public function getLibraries(){
         return $this->hasMany(Libraries::className(), ['id' => 'librery_id'])
                             ->viaTable('libreries_to_scenery', ['scenery_id' => 'id'])
                             ->orderBy('name');
@@ -244,16 +233,14 @@ class Scenery extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAirport()
-    {
+    public function getAirport(){
         return $this->hasOne(Airports::className(), ['ICAO' => 'icao']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSimulator()
-    {
+    public function getSimulator(){
         return $this->hasOne(Sim::className(), ['id_catsimulator' => 'catesim']);
     }
     
@@ -267,16 +254,14 @@ class Scenery extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAuthor()
-    {
+    public function getAuthor(){
         return $this->hasOne(User::className(), ['id' => 'author_id']);
     }
     
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUpdater()
-    {
+    public function getUpdater(){
         return $this->hasOne(User::className(), ['id' => 'updater_id']);
     }
 }

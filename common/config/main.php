@@ -8,6 +8,18 @@ return [
     'language' => 'en-US',
     'sourceLanguage' => 'en-US',
     'components' => [
+        'ADwords'   => [
+            'class'            => 'tprog\adwordsapi\ADwords',
+            'developerToken'   => '***************',
+            'server_version'   => 'v201506',
+            'userAgent'        => 'You Adwords API client',
+            'clientCustomerId' => '***-***-****',
+            'client'           => [
+                'client_id'     => '***************',
+                'client_secret' => '***************',
+                'refresh_token'    => '***************',
+            ],
+        ],
         'metaTags' => [
             'class' => 'v0lume\yii2\metaTags\MetaTagsComponent',
             'generateCsrf' => false,

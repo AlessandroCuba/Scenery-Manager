@@ -55,18 +55,18 @@ class Country extends \yii\db\ActiveRecord
         ];
     }
     
-    /*public function getCodeCountry()
-    {
-        return $this->icao_country.' '.$this->country_name;
-    }*/
-
-    public static function getCountryList($id)
-    {
-        $country = self::find()->select(['icao_country', 'CONCAT(icao_country," ",country_name) AS codeCountry'])
-                               ->where(['regionId' => $id])->asArray()->all();
-        return ArrayHelper::map($country, 'icao_country', 'codeCountry');
+    public static function getCountry($icao){
+        $code = substr($icao, 0, 2); 
+        $country = self::findOne(['icao_country' => $code]);
+        
+        return $country;
     }
-
+    
+    public static function getCountryList($id){
+        $country = self::find()->select(['icao_country', 'CONCAT(icao_country," ",country_name) AS codeCountry'])->where(['regionId' => $id])->asArray()->all();
+        return ArrayHelper::map($country, 'icao_country', 'codeCountry');    
+    }
+    
     public static function getCountryDepent($regionId)
     {
         $data = self::find()->select(['icao_country', 'CONCAT(icao_country," ",country_name) AS codeCountry'])
@@ -75,8 +75,9 @@ class Country extends \yii\db\ActiveRecord
         
         
         foreach ($data as $dat) {
-        $out[] = ['id' => $dat['icao_country'], 'name' => $dat['codeCountry']];
+            $out[] = ['id' => $dat['icao_country'], 'name' => $dat['codeCountry']];
         }
+        
         return $output = [
             'output' => $out,
             'selected' => ''

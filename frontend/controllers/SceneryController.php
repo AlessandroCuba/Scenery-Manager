@@ -128,7 +128,7 @@ class SceneryController extends Controller
                 //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
                 //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
                 // ]
-                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                echo Json::encode(['output' => $out, 'selected' => ' ']);
                 return;
             }
         }
@@ -146,6 +146,7 @@ class SceneryController extends Controller
     protected function findModel($id)
     {
         if (($model = Scenery::findOne($id)) !== null) {
+            
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

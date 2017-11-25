@@ -25,9 +25,6 @@ class AviationMapEmbed extends Widget{
     public $longitude;  
     public $zoomMap = 3;
     public $class = '';
-        
-    public $divId;
-    public $myId = 'sm_0587';
     
     const URL_SKYVECTOR = 'http://skyvector.com/api/lchart?';
     const HEIHGT = 200;
@@ -56,11 +53,9 @@ class AviationMapEmbed extends Widget{
     
     public function run() {
         
-        
-        
         $classContainer = (empty($this->class) || isset($this->class)) ? self::IMG_FLUID : $this->class ;
-        $idContainer    = (empty($this->divId) || isset($this->divId)) ? $this->divId : $this->myId;
-        
+        $idContainer = rand(1, 10);
+                
         switch ($this->typeMap) {
             case self::VFR_SEC:
                 $nameMap = 'VFR Sectional';

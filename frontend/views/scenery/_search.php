@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
 use backend\modules\scenery\models\Scenery;
 use backend\modules\scenery\models\Region;
 use backend\modules\scenery\models\Country;
+use backend\modules\scenery\models\Airports;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\ScenerySearch */
@@ -42,7 +43,6 @@ use backend\modules\scenery\models\Country;
             'theme' => Select2::THEME_BOOTSTRAP,
             'options' => [
                 'placeholder' => 'Select a Region ...',
-                //'multiple'=>true,
             ],
             'pluginOptions' => [
                 'allowClear' => true
@@ -61,10 +61,11 @@ use backend\modules\scenery\models\Country;
                 'url' => Url::to(['scenery/country']),
             ],
             'data' => Country::getCountryList($model->region),
+            
     ])->label(false);?>
     
     <?= $form->field($model, 'icao')->widget(TypeaheadBasic::classname(), [
-            'data' => Scenery::getAirportList(),
+            'data' => Airports::getAirportList(),
             'pluginOptions' => ['highlight' => true],
             'options' => ['placeholder' => 'Filter ICAO ...'],
     ])->label(false); ?>

@@ -62,7 +62,7 @@ ThemeAsset::register($this);
             'linkOptions' => ['data-method' => 'post']
         ];
     }
-    echo Nav::widget([
+    echo Navigation::widget([
         'encodeLabels' => false,
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

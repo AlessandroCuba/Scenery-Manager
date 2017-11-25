@@ -56,11 +56,16 @@ class Region extends \yii\db\ActiveRecord
         $region = self::find()->orderBy('name_region ASC')->asArray()->all();
         return ArrayHelper::map($region, 'id_icao_region', 'name_region');
     }
+    
+    public static function getRegionName($id){
+        $region = self::findOne(['id_icao_region' => $id]);
+        return $region;
+    }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIcaoCountries()
+    public function getCountries()
     {
         return $this->hasMany(IcaoCountry::className(), ['regionId' => 'id_icao_region']);
     }
