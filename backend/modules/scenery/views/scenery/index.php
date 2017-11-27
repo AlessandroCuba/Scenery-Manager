@@ -10,6 +10,7 @@ use yii2mod\rating\StarRating;
 
 /* Models */
 use backend\modules\scenery\models\Scenery;
+use backend\modules\scenery\models\Sim;
 use yeesoft\models\User;
 
 /* @var $this yii\web\View */
@@ -81,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label' => 'Simulator',
                         'attribute' => 'catesim',
                         'value' =>  'simulator.catsimulator',
-                        'filter' => Scenery::getSimList(),
+                        'filter' => Sim::getSimList(),
                     ],
                     // 'url_video:url',
                     // 'url_download:url',

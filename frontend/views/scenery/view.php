@@ -1,15 +1,14 @@
 <?php
 
 use kartik\helpers\Html;
-use kartik\detail\DetailView;
-use yeesoft\helpers\FA;
-use yii\flags\Flags;
 use backend\modules\scenery\widgets\AviationMapEmbed\AviationMapEmbed;
 use geertw\Yii2\Adsense\AdsenseWidget;
 use kartik\icons\Icon;
 use yii\widgets\Breadcrumbs;
+use yii\timeago\TimeAgo;
+use yeesoft\media\widgets\Carousel;
 
-
+use yeesoft\models\User;
 use backend\modules\scenery\widgets\ImagesScenery;
 use backend\modules\scenery\models\Country;
 use backend\modules\scenery\models\Region;
@@ -29,88 +28,100 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);?>
 </div>
 
-
 <div class="col-md-9">
-    <?php
-    
-    $attribute = [
-        [
-            'group'=>true,
-            'label'=> 'Airport Information',
-            'rowOptions'=>['class'=>'warning']
-        ],
-        [
-            'columns' => [[
-                'label'=>'Name/ICAO',
-                'value' => $model->airport->Name.' <kbd>'.$model->icao.'</kbd>',
-                'displayOnly' => true,
-                'format'=>'raw', 
-                'valueColOptions' => ['style'=>'width:40%']
-            ],[
-                'attribute' => 'Coodinates', 
-                'value' => '<kbd>'.Airports::getlatDMS($model->airport->Latitude).'</kbd><br><kbd>'.Airports::getLonDMS($model->airport->Longitude).'</kbd>',
-                'displayOnly'=>true,
-                'format' => 'raw',
-            ]]
-        ],
-        [
-            'columns' => [[
-                'label' => 'Country',
-                'format' => 'raw',
-                'valueColOptions' => ['style'=>'width:20%'],
-                'value' => Icon::show('CU', [], Icon::FI).' '.Country::getCountry($model->icao)['country_name']
-            ],[
-                'label' => 'Region',
-                'format' => 'raw',
-                'valueColOptions' => ['style'=>'width:80%'],
-                'value' => Region::getRegionName(Country::getCountry($model->icao)['regionId'])['name_region'],
-            ]]      
-        ],
-        [
-            'group'=>true,
-            'label'=> FA::icon('info').' Scenery Information',
-            'rowOptions'=>['class'=>'warning']
-        ],
-        [
-            'group'=>true,
-            'value' => $model->description,
-            //'label'=> FA::icon('info').' Scenery Information',
-            //'rowOptions'=>['class'=>'warning']
-        ],
-       
-    ];
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title bold">
+                <?= Html::bsLabel($model->icao, Html::TYPE_PRIMARY).' '.Html::encode($model->airport->Name); ?>
+            </h3>    
+        </div>
+        <div class="panel-body">
             
-    echo DetailView::widget([
-        'model' => $model,
-        'condensed' => true,
-        'hover' => true,
-        'mode' => DetailView::MODE_VIEW,
-        'panel' => [
-            'heading' => Html::bsLabel($model->icao, Html::TYPE_PRIMARY).' '.Html::encode($model->airport->Name),
-            'type' => DetailView::TYPE_INFO,
-        ],
-        'attributes' => $attribute,
-    ]);     
-    ?>
-    
-    <div style="width: 728px; height: 90px">
-        <?= AdsenseWidget::widget(); ?>
+                <?= Carousel::widget([
+                        'album' => 'carousel',
+                        'contentView' => '@frontend/views/carousel/carousel',
+                        //'captionView' => '@frontend/views/carousel/caption',
+                        'itemsOptions' => ['class' => 'some-class']
+                ]); ?>
+            
+            <div style="width: 728px; height: 90px">
+                <?= AdsenseWidget::widget(); ?>
+            </div>
+            <table class="table responsive">
+                <tbody>
+                    <tr>
+                        <td class="heading-table">Name/<abbr title="International Civil Aviation Organization" class="initialism">ICAO</abbr></td>
+                        <td>:</td>
+                        <td class="table-name"><?= $model->airport->Name ?> <kbd><?= $model->icao ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Country</td>
+                        <td>:</td>
+                        <td><?= Icon::show('cu', [], Icon::FI).' '.Country::getCountry($model->icao)['country_name'] ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Region</td>
+                        <td class="">:</td>
+                        <td><?= Region::getRegionName(Country::getCountry($model->icao)['regionId'])['name_region'] ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Description</td>
+                        <td class="">:</td>
+                        <td><?= $model->description ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Coordenate</td>
+                        <td>:</td>
+                        <td class="table-name"><?= '<kbd>'.Airports::getlatDMS($model->airport->Latitude).'</kbd> / <kbd>'.Airports::getLonDMS($model->airport->Longitude).'</kbd>' ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-        
 </div>
 <div class="col-md-3">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center bold">File Information</h3>    
+        </div>
+        <div class="panel-body">
+            <table class="table responsive">
+                <tbody>
+                    <tr>
+                        <td class="heading-table">File by</td>
+                        <td>:</td>
+                        <td class="table-name"><?= $model->author->username ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Created</td>
+                        <td>:</td>
+                        <td class="table-name"><?= TimeAgo::widget(['timestamp' => $model->created_at]) ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Updated</td>
+                        <td>:</td>
+                        <td class="table-name"><?= TimeAgo::widget(['timestamp' => $model->updated_at]) ?></td>
+                    </tr>
+                    <tr>
+                        <td class="heading-table">Simulador</td>
+                        <td>:</td>
+                        <td class="table-name"><?= $model->simulator->catsimulator ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <?= AdsenseWidget::widget(); ?>
+        </div>
+    </div>
     <?= AviationMapEmbed::widget([
         'latitude'  => $model->airport->Latitude,
         'longitude' => $model->airport->Longitude,
         'zoomMap' => '2',
         'typeMap' => AviationMapEmbed::VFR_SEC,
     ]); ?>
-    <div class="panel panel-success">
-        <div class="panel-body">
-            <?= AdsenseWidget::widget(); ?>
-        </div>
-    </div>
-    
     <?= AviationMapEmbed::widget([
         'latitude'  => $model->airport->Latitude,
         'longitude' => $model->airport->Longitude,

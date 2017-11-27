@@ -13,6 +13,7 @@ use backend\modules\scenery\models\Scenery;
 use backend\modules\scenery\models\Region;
 use backend\modules\scenery\models\Country;
 use backend\modules\scenery\models\Airports;
+use backend\modules\scenery\models\Sim;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\ScenerySearch */
@@ -71,7 +72,7 @@ use backend\modules\scenery\models\Airports;
     ])->label(false); ?>
     
     <?= $form->field($model, 'catesim')->widget(Select2::classname(), [
-            'data' => Scenery::getSimList(),
+            'data' => Sim::getSimList(),
             'language' =>Yii::$app->language,
             'options' => ['placeholder' => 'Select a Simulator ...'],
             'pluginOptions' => [

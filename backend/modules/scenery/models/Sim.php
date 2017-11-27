@@ -3,6 +3,7 @@
 namespace backend\modules\scenery\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "categ_sim".
@@ -43,4 +44,10 @@ class Sim extends \yii\db\ActiveRecord
             'color' => Yii::t('app', 'Color HEX'),
         ];
     }
+    
+    public static function getSimList(){
+        $sims = self::find()->select(['id_catsimulator', 'catsimulator'])->asArray()->all();
+        return ArrayHelper::map($sims, 'id_catsimulator', 'catsimulator');
+    }
+    
 }

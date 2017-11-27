@@ -196,11 +196,6 @@ class Scenery extends \yii\db\ActiveRecord
         ];
     }
     
-    public static function getSimList(){
-        $sims = Sim::find()->select(['id_catsimulator', 'catsimulator'])->asArray()->all();
-        return ArrayHelper::map($sims, 'id_catsimulator', 'catsimulator');
-    }
-    
     public static function getCountyList(){
         $country = Country::find()->asArray()->all();
         return ArrayHelper::map($country, 'regionId', 'country_name');

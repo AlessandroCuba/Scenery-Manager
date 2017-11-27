@@ -6,5 +6,6 @@ return [
     'version' => '0.1.0',
     
     'icon-framework' => 'fa',
-    'icon-framework' => 'fi' 
+    'icon-framework' => 'fi',
+    'icon-framework' => 'typ',
 ];
