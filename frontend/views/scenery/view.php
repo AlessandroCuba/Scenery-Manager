@@ -6,6 +6,9 @@ use yeesoft\helpers\FA;
 use yii\flags\Flags;
 use backend\modules\scenery\widgets\AviationMapEmbed\AviationMapEmbed;
 use geertw\Yii2\Adsense\AdsenseWidget;
+use kartik\icons\Icon;
+use yii\widgets\Breadcrumbs;
+
 
 use backend\modules\scenery\widgets\ImagesScenery;
 use backend\modules\scenery\models\Country;
@@ -20,12 +23,15 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Sceneries'), 'url' =
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
+<div class="col-lg-12">
+    <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]);?>
+</div>
+
 
 <div class="col-md-9">
     <?php
-    
-    echo $model->airport->Latitude.'/'.$model->airport->Longitude;
-    
     
     $attribute = [
         [
@@ -52,12 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Country',
                 'format' => 'raw',
                 'valueColOptions' => ['style'=>'width:20%'],
-                'value' => Flags::widget([
-                                'flag' => Country::getCountry($model->icao)['alpha2code'],
-                                'type' => Flags::FLAT_24,       
-                                'useSprite' => false 
-                           ]).' '.Country::getCountry($model->icao)['country_name']
-                           
+                'value' => Icon::show('CU', [], Icon::FI).' '.Country::getCountry($model->icao)['country_name']
             ],[
                 'label' => 'Region',
                 'format' => 'raw',
@@ -67,8 +68,14 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'group'=>true,
-            'label'=> FA::icon($name).'Scenery Information',
+            'label'=> FA::icon('info').' Scenery Information',
             'rowOptions'=>['class'=>'warning']
+        ],
+        [
+            'group'=>true,
+            'value' => $model->description,
+            //'label'=> FA::icon('info').' Scenery Information',
+            //'rowOptions'=>['class'=>'warning']
         ],
        
     ];
