@@ -3,7 +3,6 @@
 use kartik\helpers\Html;
 use geertw\Yii2\Adsense\AdsenseWidget;
 use kartik\icons\Icon;
-use yii2mod\rating\StarRating;
 use yii\widgets\Breadcrumbs;
 use yii\timeago\TimeAgo;
 use evgeniyrru\yii2slick\Slick;
@@ -42,12 +41,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php 
                 $modelname = \yii\helpers\StringHelper::basename(get_class($model));
                 $files = \nemmo\attachments\models\File::find()->where(['itemId' => $model->id, 'model' => $modelname])->all();
-                $items = [];
+                
+                //print_r($files); die;
                 
                 foreach ($files as $file){
-                    $imageURL = Yii::getAlias('@images').DIRECTORY_SEPARATOR.Scenery::getSubDirs($file->id); 
+                    $imageURL = Yii::getAlias('@images').DIRECTORY_SEPARATOR.Scenery::getSubDirs($file->id);
                     $items[] = Html::a(Html::img($imageURL, ['width' => 250]), $imageURL, ['rel' => 'gl-fancybox']);
                 }
+               
+                
                 if(count($files)){ ?>
             
                     <?= Slick::widget([
@@ -57,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'itemOptions' => ['class' => 'img-thumbnail'], 
                             'clientOptions' => [
                                 'lazyLoad' => 'ondemand', 
-                                'infinite' => true, 
+                                'infinite' => false, 
                                 'speed' => 300, 
                                 'variableWidth' => true, 
                                 'centerMode' => true, 
@@ -67,8 +69,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]
                     ]); 
                     echo FancyBox::widget([
-                            'target' => 'a[rel=gl-fancybox]',
-                            'helpers' => true,
+                            'target' => '[rel=gl-fancybox]',
+                            'helpers' => false,
                             'mouse' => true,
                             'config' => [
                                 'maxWidth' => '90%',

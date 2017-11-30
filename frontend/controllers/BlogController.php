@@ -31,7 +31,6 @@ class BlogController extends \yii\web\Controller
                 'pagination' => $pagination,
             ]);
         }
-
         //try to display action from controller
         try {
             return $this->runAction($slug);

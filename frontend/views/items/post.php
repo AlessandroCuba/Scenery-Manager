@@ -19,7 +19,7 @@ $page = (isset($page)) ? $page : 'post';
 <p><i class="fa fa-clock-o"></i> Posted on <?= $formatter->asDate($post->updated_at , 'long');?></p>
 
 <hr>
-    <?= $post->getThumbnail(['class' => 'thumbnail pull-left', 'style' => 'width: 50px height: 100px; margin: 0 7px 7px 0']) ?>
+    <?= $post->getThumbnail(['class' => 'img-thumbnail img-responsive pull-left', 'style' => 'width: 50px height: 50px; margin: 0 7px 7px 0']) ?>
     <?= ($page === 'post') ? $post->content : $post->shortContent ?>
 <hr>
 <div class="clearfix" style="margin-bottom: 10px;">
