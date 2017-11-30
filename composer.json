@@ -19,7 +19,7 @@
     "issues": "https://github.com/yeesoft/yii2-yee-cms/issues/new",
     "source": "https://github.com/yeesoft/yii2-yee-cms"
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
     "php": ">=5.4.0",
