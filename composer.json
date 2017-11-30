@@ -1,5 +1,5 @@
 {
-  "name": "yeesoft/yii2-yee-cms",
+  "name": "AlessandroCuba/Scenery-Manager",
   "description": "Yee CMS Based on Yii 2 Advanced Project Template",
   "keywords": [
     "yee",
@@ -19,7 +19,7 @@
     "issues": "https://github.com/yeesoft/yii2-yee-cms/issues/new",
     "source": "https://github.com/yeesoft/yii2-yee-cms"
   },
-  "minimum-stability": "RC",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
     "php": ">=5.4.0",
