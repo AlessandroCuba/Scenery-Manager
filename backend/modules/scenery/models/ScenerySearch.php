@@ -22,7 +22,7 @@ class ScenerySearch extends Scenery
     {
         return [
             [['id', 'catesim', 'ranking', 'status'], 'integer'],
-            [['icao', 'creator', 'author_id', 'region', 'country', 'catesim' ], 'safe'],
+            [['icao', 'creator', 'comment_status','author_id', 'region', 'country', 'catesim' ], 'safe'],
         ];
     }
 
@@ -76,7 +76,7 @@ class ScenerySearch extends Scenery
             'status' => $this->status,
             'author_id' => $this->author_id, 
             'updater_id' => $this->updater_id,
-            
+            'comment_status' => $this->comment_status,
         ]);
 
         $query->andFilterWhere(['like', 'icao', $this->icao])

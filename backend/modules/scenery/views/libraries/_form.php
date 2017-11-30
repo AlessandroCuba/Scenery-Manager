@@ -5,7 +5,7 @@ use yeesoft\helpers\Html;
 use nemmo\attachments\components\AttachmentsInput;
 use yeesoft\media\widgets\TinyMce;
 
-use backend\modules\scenery\models\Scenery;
+use backend\modules\scenery\models\Libraries;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\scenery\models\Libraries */
@@ -68,7 +68,14 @@ use backend\modules\scenery\models\Scenery;
                             <?= $form->field($model, 'status', [
                                 'template' => '{label}<div>{input}</div>{hint}{error}',
                                 'labelOptions' => ['class' => 'control-label']
-                                ])->dropDownList(Scenery::getStatusList())
+                                ])->dropDownList(Libraries::getStatusList())
+                            ?>
+                        </div>
+                        <div class="form-group clearfix">
+                            <?= $form->field($model, 'comment_status', [
+                                'template' => '{label}<div>{input}</div>{hint}{error}',
+                                'labelOptions' => ['class' => 'control-label']
+                                ])->dropDownList(Libraries::getCommentStatusList())
                             ?>
                         </div>
                         

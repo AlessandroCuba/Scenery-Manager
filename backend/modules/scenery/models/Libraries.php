@@ -10,6 +10,10 @@ use nemmo\attachments\behaviors\FileBehavior;
 use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
 
+use backend\modules\scenery\models\Scenery;
+use yeesoft\models\User;
+use nemmo\attachments\models\File;
+use yeesoft\comments\models\Comment;
 
 /**
  * This is the model class for table "libraries".
@@ -31,6 +35,8 @@ class Libraries extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 10;
     const STATUS_INACTIVE = 0;
+    const COMMENT_STATUS_CLOSED = 0;
+    const COMMENT_STATUS_OPEN = 1;
     /**
      * @inheritdoc
      */
@@ -68,7 +74,6 @@ class Libraries extends \yii\db\ActiveRecord
         ];
     }
     
-
     /**
      * @inheritdoc
      */
@@ -76,7 +81,7 @@ class Libraries extends \yii\db\ActiveRecord
     {
         return [
             [['description', 'name', 'author', 'url'], 'required'],
-            [['id', 'created_at', 'updated_at', 'created_by', 'status', 'updated_by', 'ranking'], 'integer'],
+            [['id', 'created_at', 'updated_at', 'comment_status','created_by', 'status', 'updated_by', 'ranking'], 'integer'],
             [['description', 'videoUrl', 'url'], 'string'],
             [['author'], 'string', 'max' => 100],
         ];
@@ -100,6 +105,14 @@ class Libraries extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'url' => Yii::t('app', 'Url'),
             'ranking' => Yii::t('app', 'Ranking'),
+            'comment_status' => Yii::t('app', 'Comments'),
+        ];
+    }
+    
+     public static function getStatusList(){
+        return [
+            self::STATUS_ACTIVE => Yii::t('yee', 'Active'),
+            self::STATUS_INACTIVE => Yii::t('yee', 'Pending'),
         ];
     }
     
@@ -112,12 +125,70 @@ class Libraries extends \yii\db\ActiveRecord
         }
     }
     
+    public static function getSubDirs($id, $depth = 3)
+    {
+        $fileHash = File::findOne(['id' => $id]);
+        $depth = min($depth, 9);
+        $path = '';
+        
+        for ($i = 0; $i < $depth; $i++) {
+            $folder = substr($fileHash->hash, $i * 3, 2);
+            $path .= $folder;
+            if ($i != $depth - 1) $path .= DIRECTORY_SEPARATOR;
+        }
+        return $path.DIRECTORY_SEPARATOR.$fileHash->hash.'.'.$fileHash->type;
+    }
+    
     /**
     * @return array
     */
-    public static function getLibrariesList()
+    public static function getLibrariesList($id = null)
     {
-        $models = static::find()->where(['status' => Libraries::STATUS_ACTIVE])->orderBy('name')->all();
-        return ArrayHelper::map($models, 'id', 'name');
+        $libraries = self::find();
+        if(is_null($id)){
+            $query = $libraries->where(['status' => Libraries::STATUS_ACTIVE])->orderBy('name')->all();
+            return ArrayHelper::map($query, 'id', 'name');
+        }
+        $query = $libraries->where(['status' => Libraries::STATUS_ACTIVE, 'id'])->orderBy('name')->all();
+        return ;
+    }
+    
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getSceneries(){
+        return $this->hasMany(Scenery::className(), ['id' => 'scenery_id'])
+                            ->viaTable('libreries_to_scenery', ['librery_id' => 'id'])
+                            ->orderBy('icao');
+    }
+    
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getAuthor(){
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+    
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getAttachment(){
+        return $this->hasMany(File::className(), ['itemId' => 'id']);
+    }
+    
+    public static function getCommentStatusList()
+    {
+        return [
+            self::COMMENT_STATUS_OPEN => Yii::t('yee', 'Open'),
+            self::COMMENT_STATUS_CLOSED => Yii::t('yee', 'Closed')
+        ];
+    }
+
+    public static function getCommentCount($id)
+    {
+        $comment = Comment::find()->where(['model' => self::className()])
+                                  ->andWhere(['model_id' => $id])
+                                  ->andWhere(['status' => Comment::STATUS_APPROVED])->count();
+        return $comment;
     }
 }

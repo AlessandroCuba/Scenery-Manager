@@ -42,6 +42,28 @@ return [
         ],
     ],
     'modules' => [
+        'vote' => [
+            'class' => hauntd\vote\Module::class,
+            'guestTimeLimit' => 3600,
+            'entities' => [
+                // Entity -> Settings
+                'itemVote' => backend\modules\scenery\models\Scenery::class, // your model
+                'itemVoteGuests' => [
+                    'modelName' => backend\modules\scenery\models\Scenery::class, // your model
+                    'allowGuests' => false,
+                    'allowSelfVote' => false,
+                    'entityAuthorAttribute' => 'user_id',
+                ],
+                'itemLike' => [
+                    'modelName' => backend\modules\scenery\models\Scenery::class, // your model
+                    'type' => hauntd\vote\Module::TYPE_TOGGLE, // like/favorite button
+                ],
+                'itemFavorite' => [
+                    'modelName' => backend\modules\scenery\models\Scenery::class, // your model
+                    'type' => hauntd\vote\Module::TYPE_TOGGLE, // like/favorite button
+                ],    
+            ],
+        ],
         'iviewer' => [
             'class' => 'hoomanMirghasemi\iviewer\Module',
             'loadingText' => 'loading ...',

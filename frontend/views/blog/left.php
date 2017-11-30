@@ -49,7 +49,9 @@ use yeesoft\comment\widgets\RecentComments;
                 </div>
 
                 <!-- Side Widget Well -->
-                <?= RecentComments::widget(['class' => 'well']) ?>
-                
+                <?= RecentComments::widget([
+                    'layout' => '@backend/modules/scenery/widgets/RecentComments/views/layout',
+                    'commentTemplate' => '@backend/modules/scenery/widgets/RecentComments/views/comment'
+                ])?>
                 </div>
 

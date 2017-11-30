@@ -2,19 +2,14 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use frontend\assets\ThemeAsset;
 use yeesoft\models\Menu;
 use yeesoft\widgets\LanguageSelector;
-use yeesoft\widgets\Nav as Navigation;
+//use yeesoft\widgets\Nav as Navigation;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
-use yeesoft\comment\widgets\RecentComments;
-use webcreator\revslider\Widget as Slider;
-use wadeshuler\sliderrevolution\SliderRevolution;
 
 Yii::$app->assetManager->forceCopy = true;
 AppAsset::register($this);
@@ -22,7 +17,7 @@ ThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?php //= Yii::$app->language? Yii::$app->language : 'es' ?> es">
+<html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,13 +69,13 @@ ThemeAsset::register($this);
 
     NavBar::end();
     ?>
-    
-    <!--====== Slider Revolution ======= -->
-    <header id="carousel" class="carousel">
-        <?=$this->render('@frontend/views/layouts/_sliderRevolution'); ?>
+    <header class ="page-heading">
+        <div class="container">
+            <h1 class="heading"><?= Yii::$app->settings->get('general.title', 'Yee Site', Yii::$app->language) ?></h1>
+            <h4>Free Sceneries for you Flight Simulator</h4>
+        </div>
     </header>
-    
-    <!--====== Content ======= -->
+    <!-- Page Content -->
     <div class="container">
         <?= $content ?>
     </div>
@@ -97,3 +92,20 @@ ThemeAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#1d8a8a"
+    },
+    "button": {
+      "background": "#62ffaa"
+    }
+  },
+  "theme": "edgeless",
+  "position": "bottom-right"
+})});
+</script>

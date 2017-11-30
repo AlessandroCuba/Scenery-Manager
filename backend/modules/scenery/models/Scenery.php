@@ -14,6 +14,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 use yeesoft\models\User;
+use yeesoft\comments\models\Comment;
 use nemmo\attachments\models\File;
 use backend\modules\scenery\models\Sim;
 use backend\modules\scenery\models\Libraries;
@@ -45,6 +46,8 @@ class Scenery extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 10;
     const STATUS_INACTIVE = 0;
     const STATUS_PIRATE = 50;
+    const COMMENT_STATUS_CLOSED = 0;
+    const COMMENT_STATUS_OPEN = 1;
     
     /**
     * @var array
@@ -111,11 +114,10 @@ class Scenery extends \yii\db\ActiveRecord
     {
         return [
             [['icao', 'creator', 'description', 'catesim', 'url_download'], 'required'],
-            [['catesim', 'ranking', 'status'], 'integer'],
+            [['catesim', 'ranking', 'status', 'comment_status'], 'integer'],
             [['icao'], 'string', 'max' => 4],
             ['editableTag', ManyToManyValidator::className()],
             [['creator', 'url_video'], 'string', 'max' => 45],
-            [['description'], 'string', 'max' => 500],
             [['url_download'], 'string', 'max' => 250],
             [['editableLibrary'], ManyToManyValidator::className()],
             [['icao'], 'exist', 'skipOnError' => true, 'targetClass' => Airports::className(), 'targetAttribute' => ['icao' => 'ICAO']],
@@ -163,14 +165,6 @@ class Scenery extends \yii\db\ActiveRecord
         }
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public static function getSceneryTags()
-    {
-        return $this->hasMany(SceneryTag::className(), ['id' => 'tag_id'])
-                    ->viaTable('{{%scenery_to_tag}}', ['scenery_id' => 'id']);
-    }
     
     // Obtiene Subdirectorio Image **Funciona, No tocar
     public static function getSubDirs($id, $depth = 3)
@@ -211,9 +205,35 @@ class Scenery extends \yii\db\ActiveRecord
         }
     }
     
+    public static function getCommentStatusList()
+    {
+        return [
+            self::COMMENT_STATUS_OPEN => Yii::t('yee', 'Open'),
+            self::COMMENT_STATUS_CLOSED => Yii::t('yee', 'Closed')
+        ];
+    }
+    
+    public static function getCommentCount($id)
+    {
+        $comment = Comment::find()->where(['model' => self::className()])
+                                  ->andWhere(['model_id' => $id])
+                                  ->andWhere(['status' => Comment::STATUS_APPROVED])->count();
+        return $comment;
+    }
+
+
     public static function getdataTime($date){
         return Yii::$app->formatter->asTime($this->isNewRecord ? time() : $date)
                .' '.Yii::$app->formatter->asDate($this->isNewRecord ? date() : $date);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public static function getSceneryTags()
+    {
+        return $this->hasMany(SceneryTag::className(), ['id' => 'tag_id'])
+                    ->viaTable('{{%scenery_to_tag}}', ['scenery_id' => 'id']);
     }
     
     /**

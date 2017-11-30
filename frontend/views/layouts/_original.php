@@ -13,6 +13,8 @@ use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use yeesoft\comment\widgets\RecentComments;
+use webcreator\revslider\Widget as Slider;
+use wadeshuler\sliderrevolution\SliderRevolution;
 
 Yii::$app->assetManager->forceCopy = true;
 AppAsset::register($this);
@@ -20,7 +22,7 @@ ThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?php //= Yii::$app->language? Yii::$app->language : 'es' ?> es">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,7 +64,7 @@ ThemeAsset::register($this);
             'linkOptions' => ['data-method' => 'post']
         ];
     }
-    echo Navigation::widget([
+    echo Nav::widget([
         'encodeLabels' => false,
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
@@ -72,13 +74,13 @@ ThemeAsset::register($this);
 
     NavBar::end();
     ?>
-    <header class ="page-heading">
-        <div class="container">
-            <h1><?= Yii::$app->settings->get('general.title', 'Yee Site', Yii::$app->language) ?></h1>
-            <p>A full website template framework for building Bootstrap 4 websites with 17 pages and a working contact form.</p>
-        </div>
+    
+    <!--====== Slider Revolution ======= -->
+    <header id="carousel" class="carousel">
+        <?=$this->render('@frontend/views/layouts/_sliderRevolution'); ?>
     </header>
-    <!-- Page Content -->
+    
+    <!--====== Content ======= -->
     <div class="container">
         <?= $content ?>
     </div>

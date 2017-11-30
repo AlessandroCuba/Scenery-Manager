@@ -3,12 +3,12 @@ use yii2mod\rating\StarRating;
 use yii\helpers\ArrayHelper;
 use yeesoft\helpers\FA;
 use kartik\helpers\Html;
-use yii\helpers\StringHelper;
+use kartik\icons\Icon;
 
 use backend\modules\scenery\models\Scenery;
 ?>
 
-<div class="col-md-3">
+<div class="col-md-4">
     <div class="list-container">
         <div class="list-shot">
             <a href="#">
@@ -27,13 +27,12 @@ use backend\modules\scenery\models\Scenery;
                 ]);?>
             </a>
         </div>
-        <div class="scenery-description img-responsive">
+        <div class="description img-responsive">
             <div class ="name text-center"><?= Html::bsLabel($model->icao, Html::TYPE_PRIMARY).' '.Html::bsLabel($model->simulator->catsimulator, Html::TYPE_PRIMARY)?></div>
-            <div class ="description text-center"><?= $model->airport->Name ?></div>
-            <div class ="action text-center"><?= Html::a(FA::icon('eye').' | View', ['scenery/view/'.$model->id], ['class' => 'btn btn-info']) ?></div>
+            <div class ="actions text-center"><?= Html::a(Icon::show('search', ['class' => 'fa-3x'], Icon::FA), ['scenery/view/'.$model->id], ['class' => 'btn btn-info']) ?></div>
         </div>
         <div class="stats">
-            <span class="comments"><a hrf="#"><?= FA::icon('commenting')?></a> 54</span>
+            <span class="comments"><a hrf="#"><?= FA::icon('commenting')?></a> <?= Scenery::getCommentCount($model->id) ?></span>
             <span class="download"><a hrf="#"><?= FA::icon('thumbs-up ')?></a> 150</span>
         </div>
     </div>

@@ -12,9 +12,9 @@ $page = (isset($page)) ? $page : 'post';
 
 <!-- Blog Entries Column -->
 <!-- First Blog Post -->
-<h2><?= Html::a($post->title, ["/site/{$post->slug}"], ['class' => 'text-info']) ?></h2>
+<h2><?= Html::a($post->title, ["/blog/{$post->slug}"], ['class' => 'text-info']) ?></h2>
         
-<?= Url::toRoute(["site/{$post->id}"])?>
+<?= Url::toRoute(["/{$post->id}"])?>
 
 <p><i class="fa fa-clock-o"></i> Posted on <?= $formatter->asDate($post->updated_at , 'long');?></p>
 

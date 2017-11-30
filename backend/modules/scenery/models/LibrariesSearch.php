@@ -19,7 +19,7 @@ class LibrariesSearch extends Libraries
     {
         return [
             [['id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'ranking', 'status'], 'integer'],
-            [['description', 'author', 'videoUrl', 'url'], 'safe'],
+            [['description', 'comment_status','author', 'videoUrl', 'url'], 'safe'],
         ];
     }
 
@@ -71,6 +71,7 @@ class LibrariesSearch extends Libraries
             'updated_by' => $this->updated_by,
             'ranking' => $this->ranking,
             'status' => $this->status,
+            'comment_status' => $this->comment_status,
         ]);
 
         $query->andFilterWhere(['like', 'description', $this->description])

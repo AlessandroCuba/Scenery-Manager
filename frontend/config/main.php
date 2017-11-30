@@ -54,7 +54,7 @@ return [
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 		'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<slug:[\w \-]+>' => 'site/index/',
+                '<controller:\w+>/<slug:[\w \-]+>' => 'blog/index/',
             ],
             'nonMultilingualUrls' => [
                 'auth/default/oauth',

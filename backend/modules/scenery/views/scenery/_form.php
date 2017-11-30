@@ -146,7 +146,13 @@ use backend\modules\scenery\models\Libraries;
                                 ])->dropDownList(Scenery::getStatusList())
                             ?>
                         </div>
-                        
+                         <div class="form-group clearfix">
+                            <?= $form->field($model, 'comment_status', [
+                                'template' => '{label}<div>{input}</div>{hint}{error}',
+                                'labelOptions' => ['class' => 'control-label']
+                                ])->dropDownList(Scenery::getCommentStatusList())
+                            ?>
+                        </div>
                         <div class="form-group clearfix">
                             <label class="control-label" style="float: left; padding-right: 5px;">
                                 <?= $model->attributeLabels()['created_at'] ?> :

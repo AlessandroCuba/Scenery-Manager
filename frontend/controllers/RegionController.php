@@ -9,8 +9,6 @@ class RegionController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $this->layout = 'view';
-        
         $queryRegion = Region::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $queryRegion,

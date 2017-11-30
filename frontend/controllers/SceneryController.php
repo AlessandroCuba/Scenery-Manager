@@ -54,7 +54,6 @@ class SceneryController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'view';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

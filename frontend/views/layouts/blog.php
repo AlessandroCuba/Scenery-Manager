@@ -25,7 +25,7 @@ use yii\widgets\LinkPager;
 
 Yii::$app->assetManager->forceCopy = true;
 AppAsset::register($this);
-ThemeAsset::register($this);
+//ThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
